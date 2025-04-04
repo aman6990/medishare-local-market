@@ -37,7 +37,12 @@ const Orders = () => {
                 <div className="flex-1">
                   <h3 className="font-medium">{i === 0 ? 'Advanced Vitamin C Serum' : i === 1 ? 'Natural Herbal Shampoo' : 'Health Supplements Bundle'}</h3>
                   <p className="text-gray-500 text-sm">Ordered on: {i === 0 ? 'April 1, 2025' : i === 1 ? 'March 25, 2025' : 'March 30, 2025'}</p>
-                  <p className="font-medium">₹{i === 0 ? '599' : i === 1 ? '299' : '1,299'}</p>
+                  <div className="flex justify-between items-center mt-1">
+                    <p className="font-medium">₹{i === 0 ? '599' : i === 1 ? '299' : '1,299'}</p>
+                    {i === 0 && (
+                      <span className="text-xs text-medishare-green">Delivery in 60 minutes</span>
+                    )}
+                  </div>
                 </div>
                 <button
                   onClick={() => handleTrackOrder(i)}
@@ -52,7 +57,7 @@ const Orders = () => {
       </div>
 
       <Dialog open={openTrackingDialog} onOpenChange={setOpenTrackingDialog}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Order Tracking</DialogTitle>
           </DialogHeader>
@@ -67,10 +72,13 @@ const Orders = () => {
               name="Raj Kumar"
               phone="+91 98765 43210"
               gender="Male"
+              age={28}
+              experience="3+ years"
               photo="https://storage.googleapis.com/a1aa/image/uzmLjwq37nMh354nzYRTIJz8k8f6y1bGE971F_tB6Cc.jpg"
               location={{ lat: 25.4159, lng: 78.3399 }}
               currentDistance="1.5 km away"
               estimatedArrival="15 minutes"
+              orderId="1000"
             />
           )}
         </DialogContent>

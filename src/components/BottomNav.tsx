@@ -22,7 +22,7 @@ const BottomNav = () => {
       </Link>
       <Link to="/orders" className="text-center">
         <Package className={isActive('/orders') ? 'mx-auto text-medishare-blue' : 'mx-auto text-gray-500'} size={20} />
-        <p className={isActive('/orders') ? 'text-xs text-medishare-blue' : 'text-xs text-gray-500'}>My Orders</p>
+        <p className={isActive('/orders') ? 'text-xs text-medishare-blue' : 'text-xs text-gray-500'}>Track Order</p>
       </Link>
       <Link to="/account" className="text-center">
         <User className={isActive('/account') ? 'mx-auto text-medishare-blue' : 'mx-auto text-gray-500'} size={20} />

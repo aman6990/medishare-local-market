@@ -11,6 +11,8 @@ import Cart from "./pages/Cart";
 import Assistant from "./pages/Assistant";
 import Orders from "./pages/Orders";
 import Account from "./pages/Account";
+import Contact from "./pages/Contact";
+import Chat from "./pages/Chat";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +29,8 @@ const App = () => (
           <Route path="/assistant" element={<Assistant />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/chat" element={<Chat />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

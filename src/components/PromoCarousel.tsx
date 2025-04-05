@@ -124,4 +124,3 @@ const PromoCarousel = () => {
 };
 
 export default PromoCarousel;
-

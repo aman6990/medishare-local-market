@@ -2,19 +2,11 @@
 import React from 'react';
 import Header from '@/components/Header';
 import SearchBar from '@/components/SearchBar';
-import PromoBanner from '@/components/PromoBanner';
 import CategoryItem from '@/components/CategoryItem';
 import ProductCard from '@/components/ProductCard';
 import SectionHeading from '@/components/SectionHeading';
 import BottomNav from '@/components/BottomNav';
 import { Flower2, Scissors, Baby, Pill, Droplet, Dumbbell } from 'lucide-react';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import PromoCarousel from '@/components/PromoCarousel';
 
 const Index = () => {

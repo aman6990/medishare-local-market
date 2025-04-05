@@ -37,7 +37,6 @@ const PromoCarousel = () => {
     }
   ];
 
-  // Prescription banner that will be displayed below the carousel
   const prescriptionBanner = {
     title: "Order with prescription",
     description: "Upload prescription to place your order",
@@ -64,19 +63,24 @@ const PromoCarousel = () => {
             }
           }}
         >
-          <CarouselContent>
+          <CarouselContent className="flex">
             {slides.map((slide, index) => (
-              <CarouselItem key={index} className="pt-1 md:basis-1/2 lg:basis-1/2">
-                <PromoBanner
-                  title={slide.title}
-                  description={slide.description}
-                  discount={slide.discount}
-                  buttonText={slide.buttonText}
-                  imageUrl={slide.imageUrl}
-                  backgroundColor={slide.backgroundColor}
-                  textColor={slide.textColor}
-                  icon={slide.icon}
-                />
+              <CarouselItem 
+                key={index} 
+                className="flex-grow basis-full md:basis-full lg:basis-full px-2"
+              >
+                <div className="h-full">
+                  <PromoBanner
+                    title={slide.title}
+                    description={slide.description}
+                    discount={slide.discount}
+                    buttonText={slide.buttonText}
+                    imageUrl={slide.imageUrl}
+                    backgroundColor={slide.backgroundColor}
+                    textColor={slide.textColor}
+                    icon={slide.icon}
+                  />
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -120,3 +124,4 @@ const PromoCarousel = () => {
 };
 
 export default PromoCarousel;
+

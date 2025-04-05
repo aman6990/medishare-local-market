@@ -46,7 +46,7 @@ const PromoCarousel = () => {
     imageUrl: "https://storage.googleapis.com/a1aa/image/X-s0oj3Em7ZDn8C42DCbdGGbQtxwe_ORchi2dOJrxi4.jpg",
     backgroundColor: "bg-medishare-lightblue",
     textColor: "text-gray-800",
-    buttonVariant: "outline"
+    buttonVariant: "outline" as const
   };
 
   return (
@@ -75,7 +75,6 @@ const PromoCarousel = () => {
                   imageUrl={slide.imageUrl}
                   backgroundColor={slide.backgroundColor}
                   textColor={slide.textColor}
-                  buttonVariant={slide.buttonVariant as "default" | "outline" | undefined}
                   icon={slide.icon}
                 />
               </CarouselItem>
@@ -113,7 +112,7 @@ const PromoCarousel = () => {
           imageUrl={prescriptionBanner.imageUrl}
           backgroundColor={prescriptionBanner.backgroundColor}
           textColor={prescriptionBanner.textColor}
-          buttonVariant={prescriptionBanner.buttonVariant as "default" | "outline" | undefined}
+          buttonVariant={prescriptionBanner.buttonVariant}
         />
       </div>
     </div>

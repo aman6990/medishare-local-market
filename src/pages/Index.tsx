@@ -8,6 +8,14 @@ import ProductCard from '@/components/ProductCard';
 import SectionHeading from '@/components/SectionHeading';
 import BottomNav from '@/components/BottomNav';
 import { Flower2, Scissors, Baby, Pill, Droplet, Dumbbell } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import PromoCarousel from '@/components/PromoCarousel';
 
 const Index = () => {
   return (
@@ -16,28 +24,7 @@ const Index = () => {
       <SearchBar />
       
       <div className="px-4 mt-4">
-        <PromoBanner
-          title="Boost vitality naturally"
-          description="Homeopathy brings gentle and effective care"
-          discount="up to 25% OFF"
-          buttonText="Order now"
-          imageUrl="https://storage.googleapis.com/a1aa/image/8AJiSqF25PyV3ZMzaB_IKgB8F0_3aTZi4xa2LaGHZRw.jpg"
-          backgroundColor="bg-medishare-pink"
-          textColor="text-medishare-red"
-        />
-      </div>
-      
-      <div className="px-4 mt-4">
-        <PromoBanner
-          title="Order with prescription"
-          description="Upload prescription to place your order"
-          discount=""
-          buttonText="Order now"
-          imageUrl="https://storage.googleapis.com/a1aa/image/X-s0oj3Em7ZDn8C42DCbdGGbQtxwe_ORchi2dOJrxi4.jpg"
-          backgroundColor="bg-medishare-lightblue"
-          textColor="text-gray-800"
-          buttonVariant="outline"
-        />
+        <PromoCarousel />
       </div>
       
       <div className="px-4 mt-4">

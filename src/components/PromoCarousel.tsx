@@ -67,7 +67,6 @@ const PromoCarousel = () => {
                     imageUrl={slide.imageUrl}
                     backgroundColor={slide.backgroundColor}
                     textColor={slide.textColor}
-                    icon={slide.icon}
                   />
                 </div>
               </CarouselItem>

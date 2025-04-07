@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/carousel";
 import PromoBanner from './PromoBanner';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Clock } from 'lucide-react';
 
 const PromoCarousel = () => {
   const [current, setCurrent] = useState(0);
@@ -24,16 +23,6 @@ const PromoCarousel = () => {
       imageUrl: "https://storage.googleapis.com/a1aa/image/8AJiSqF25PyV3ZMzaB_IKgB8F0_3aTZi4xa2LaGHZRw.jpg",
       backgroundColor: "bg-medishare-pink",
       textColor: "text-medishare-red"
-    },
-    {
-      title: "24/7 Medicine Delivery",
-      description: "Fast & reliable, anytime you need it",
-      discount: "FREE delivery on orders above ₹299",
-      buttonText: "Order now",
-      imageUrl: "https://storage.googleapis.com/a1aa/image/uzmLjwq37nMh354nzYRTIJz8k8f6y1bGE971F_tB6Cc.jpg",
-      backgroundColor: "bg-medishare-green",
-      textColor: "text-gray-800",
-      icon: Clock
     }
   ];
 
@@ -49,7 +38,7 @@ const PromoCarousel = () => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-2">
       <div className="relative">
         <Carousel 
           className="w-full" 
@@ -85,7 +74,7 @@ const PromoCarousel = () => {
             ))}
           </CarouselContent>
           
-          {!isMobile && (
+          {!isMobile && slides.length > 1 && (
             <>
               <CarouselPrevious className="left-0" />
               <CarouselNext className="right-0" />
@@ -93,17 +82,19 @@ const PromoCarousel = () => {
           )}
         </Carousel>
         
-        {/* Slide indicator */}
-        <div className="flex justify-center mt-2 gap-1">
-          {slides.map((_, index) => (
-            <div 
-              key={index} 
-              className={`h-1.5 rounded-full transition-all ${
-                index === current % slides.length ? 'w-6 bg-medishare-blue' : 'w-2 bg-gray-300'
-              }`}
-            />
-          ))}
-        </div>
+        {/* Slide indicator - only show if there are multiple slides */}
+        {slides.length > 1 && (
+          <div className="flex justify-center mt-2 gap-1">
+            {slides.map((_, index) => (
+              <div 
+                key={index} 
+                className={`h-1.5 rounded-full transition-all ${
+                  index === current % slides.length ? 'w-6 bg-medishare-blue' : 'w-2 bg-gray-300'
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Prescription banner placed below the carousel */}

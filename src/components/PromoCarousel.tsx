@@ -29,7 +29,7 @@ const PromoCarousel = () => {
       description: "Get your medicines delivered anytime, anywhere",
       discount: "FREE delivery on orders above $30",
       buttonText: "Order now",
-      imageUrl: "https://storage.googleapis.com/a1aa/image/X-s0oj3Em7ZDn8C42DCbdGGbQtxwe_ORchi2dOJrxi4.jpg",
+      imageUrl: "https://storage.googleapis.com/a1aa/image/photo-1498936178812-4b2e558d2937.jpg",
       backgroundColor: "bg-medishare-lightblue",
       textColor: "text-gray-800"
     }
@@ -65,7 +65,7 @@ const PromoCarousel = () => {
             {slides.map((slide, index) => (
               <CarouselItem 
                 key={index} 
-                className="flex-grow basis-full md:basis-full lg:basis-full px-2"
+                className="flex-grow basis-full md:basis-1/2 lg:basis-1/2 px-2"
               >
                 <div className="h-full">
                   <PromoBanner

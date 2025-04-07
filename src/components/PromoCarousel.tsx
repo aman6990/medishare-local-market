@@ -23,6 +23,15 @@ const PromoCarousel = () => {
       imageUrl: "https://storage.googleapis.com/a1aa/image/8AJiSqF25PyV3ZMzaB_IKgB8F0_3aTZi4xa2LaGHZRw.jpg",
       backgroundColor: "bg-medishare-pink",
       textColor: "text-medishare-red"
+    },
+    {
+      title: "24/7 Medicine Delivery",
+      description: "Get your medicines delivered anytime, anywhere",
+      discount: "FREE delivery on orders above $30",
+      buttonText: "Order now",
+      imageUrl: "https://storage.googleapis.com/a1aa/image/X-s0oj3Em7ZDn8C42DCbdGGbQtxwe_ORchi2dOJrxi4.jpg",
+      backgroundColor: "bg-medishare-lightblue",
+      textColor: "text-gray-800"
     }
   ];
 

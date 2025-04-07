@@ -47,7 +47,7 @@ const PromoCarousel = () => {
   };
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-0">
       <div className="relative">
         <Carousel 
           className="w-full" 
@@ -105,8 +105,8 @@ const PromoCarousel = () => {
         )}
       </div>
 
-      {/* Prescription banner placed below the carousel */}
-      <div className="w-full">
+      {/* Prescription banner placed below the carousel with no gap */}
+      <div className="w-full mt-2">
         <PromoBanner
           title={prescriptionBanner.title}
           description={prescriptionBanner.description}

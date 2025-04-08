@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { 
   Carousel, 
   CarouselContent, 
@@ -11,6 +12,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 
 const PromoCarousel = () => {
   const [current, setCurrent] = useState(0);
+  const [api, setApi] = useState<any>(null);
   const isMobile = useIsMobile();
   
   const slides = [
@@ -28,7 +30,7 @@ const PromoCarousel = () => {
       description: "Get your medicines delivered anytime, anywhere",
       discount: "",
       buttonText: "Order now",
-      imageUrl: "https://storage.googleapis.com/a1aa/image/photo-1498936178812-4b2e558d2937.jpg",
+      imageUrl: "https://storage.googleapis.com/a1aa/image/photo-1581091226825-a6a2a5aee158.jpg",
       backgroundColor: "bg-medishare-lightblue",
       textColor: "text-gray-800"
     }
@@ -45,6 +47,35 @@ const PromoCarousel = () => {
     buttonVariant: "outline" as const
   };
 
+  // Auto-sliding functionality
+  useEffect(() => {
+    if (!api) return;
+    
+    const interval = setInterval(() => {
+      api.scrollNext();
+    }, 5000); // Change slide every 5 seconds
+    
+    return () => clearInterval(interval);
+  }, [api]);
+
+  // Update current slide index when slide changes
+  useEffect(() => {
+    if (!api) return;
+    
+    const onSelect = () => {
+      setCurrent(api.selectedScrollSnap());
+    };
+    
+    api.on("select", onSelect);
+    
+    // Set initial index
+    setCurrent(api.selectedScrollSnap());
+    
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
+
   return (
     <div className="space-y-0">
       <div className="relative">
@@ -54,11 +85,7 @@ const PromoCarousel = () => {
             align: "start",
             loop: true,
           }}
-          onSelect={(api) => {
-            if (api) {
-              setCurrent(api.selectedScrollSnap());
-            }
-          }}
+          setApi={setApi}
         >
           <CarouselContent className="flex">
             {slides.map((slide, index) => (

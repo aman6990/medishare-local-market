@@ -8,6 +8,8 @@ import SectionHeading from '@/components/SectionHeading';
 import BottomNav from '@/components/BottomNav';
 import { Flower2, Scissors, Baby, Pill, Droplet, Dumbbell } from 'lucide-react';
 import PromoCarousel from '@/components/PromoCarousel';
+import { Card, CardContent } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   return (
@@ -17,6 +19,29 @@ const Index = () => {
       
       <div className="px-4 mt-4">
         <PromoCarousel />
+      </div>
+      
+      {/* Featured Product */}
+      <div className="px-4 mt-4">
+        <SectionHeading title="Featured Product" />
+        <Link to="/product/neurobion-forte">
+          <Card className="bg-white shadow-sm hover:shadow-md transition-shadow">
+            <CardContent className="p-4">
+              <div className="flex items-center">
+                <img 
+                  src="/lovable-uploads/26049ee2-384f-47bb-991d-d725f365190b.png"
+                  alt="Neurobion Forte"
+                  className="w-20 h-20 object-contain"
+                />
+                <div className="ml-4">
+                  <h3 className="font-medium text-gray-800">Neurobion Forte Tablet 30</h3>
+                  <p className="text-sm text-gray-600">Vitamin B Complex</p>
+                  <p className="text-medishare-green mt-1">20% OFF</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </Link>
       </div>
       
       <div className="px-4 mt-4">

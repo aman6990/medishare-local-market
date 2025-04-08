@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { 
   Carousel, 
@@ -27,7 +26,7 @@ const PromoCarousel = () => {
     {
       title: "24/7 Medicine Delivery",
       description: "Get your medicines delivered anytime, anywhere",
-      discount: "FREE delivery on orders above $30",
+      discount: "",
       buttonText: "Order now",
       imageUrl: "https://storage.googleapis.com/a1aa/image/photo-1498936178812-4b2e558d2937.jpg",
       backgroundColor: "bg-medishare-lightblue",

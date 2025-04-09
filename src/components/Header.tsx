@@ -2,8 +2,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Bell, ShoppingCart } from 'lucide-react';
+import { useCart } from '@/contexts/CartContext';
 
 const Header = () => {
+  const { totalItems } = useCart();
+  
   return (
     <div className="flex justify-between items-center p-4 bg-white shadow-sm sticky top-0 z-10">
       <div className="flex items-center space-x-2">
@@ -14,8 +17,13 @@ const Header = () => {
         <Link to="/notifications">
           <Bell size={20} />
         </Link>
-        <Link to="/cart">
+        <Link to="/cart" className="relative">
           <ShoppingCart size={20} />
+          {totalItems > 0 && (
+            <span className="absolute -top-2 -right-2 bg-medishare-red text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+              {totalItems}
+            </span>
+          )}
         </Link>
       </div>
     </div>

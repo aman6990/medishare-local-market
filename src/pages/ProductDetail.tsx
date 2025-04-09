@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -223,6 +224,7 @@ const ProductDetail = () => {
       <ProductImageGallery imageUrl={product.imageUrl} name={product.name} />
       
       <ProductInfo
+        id={product.id}
         name={product.name}
         manufacturer={product.manufacturer}
         packSize={product.packSize}
@@ -230,6 +232,7 @@ const ProductDetail = () => {
         discountPercentage={product.discountPercentage}
         discountedPrice={product.discountedPrice}
         pricePerUnit={product.pricePerUnit}
+        imageUrl={product.imageUrl}
       />
       
       <ProductBenefits benefits={product.mainBenefits} />

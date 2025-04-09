@@ -1,9 +1,12 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { PlusCircle, MinusCircle } from 'lucide-react';
+import { PlusCircle, MinusCircle, ShoppingCart } from 'lucide-react';
+import { useCart } from '@/contexts/CartContext';
+import { useToast } from '@/hooks/use-toast';
 
 interface ProductInfoProps {
+  id: string;
   name: string;
   manufacturer: string;
   packSize: string;
@@ -11,18 +14,23 @@ interface ProductInfoProps {
   discountPercentage: number;
   discountedPrice: number;
   pricePerUnit: number;
+  imageUrl: string;
 }
 
 const ProductInfo = ({ 
+  id,
   name, 
   manufacturer, 
   packSize, 
   mrp, 
   discountPercentage, 
   discountedPrice, 
-  pricePerUnit 
+  pricePerUnit,
+  imageUrl
 }: ProductInfoProps) => {
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
+  const { toast } = useToast();
   
   // Function to increase quantity
   const increaseQuantity = () => {
@@ -34,6 +42,23 @@ const ProductInfo = ({
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
+  };
+
+  // Function to add product to cart
+  const handleAddToCart = () => {
+    addToCart({
+      id,
+      name,
+      imageUrl,
+      price: discountedPrice,
+      quantity
+    });
+
+    toast({
+      title: "Added to Cart",
+      description: `${quantity} × ${name} added to your cart`,
+      duration: 3000,
+    });
   };
   
   return (
@@ -76,7 +101,11 @@ const ProductInfo = ({
             <PlusCircle size={20} />
           </button>
         </div>
-        <Button className="px-12 py-6 text-lg" onClick={() => console.log('Added to cart')}>
+        <Button 
+          className="px-12 py-6 text-lg flex items-center gap-2" 
+          onClick={handleAddToCart}
+        >
+          <ShoppingCart size={20} />
           Add
         </Button>
       </div>

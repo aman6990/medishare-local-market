@@ -16,6 +16,7 @@ import Contact from "./pages/Contact";
 import Chat from "./pages/Chat";
 import Addresses from "./pages/Addresses";
 import ProductDetail from "./pages/ProductDetail";
+import SavedItems from "./pages/SavedItems";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="/chat" element={<Chat />} />
             <Route path="/addresses" element={<Addresses />} />
             <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/saved-items" element={<SavedItems />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

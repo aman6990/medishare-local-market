@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
 import { User, Settings, Heart, MapPin, Phone, HelpCircle, LogOut } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const Account = () => {
   return (
@@ -11,14 +12,20 @@ const Account = () => {
       <Header />
       <div className="p-4">
         <div className="bg-white p-4 rounded-lg shadow-sm mb-4">
-          <div className="flex items-center gap-3">
-            <div className="bg-medishare-blue/10 p-3 rounded-full">
-              <User size={24} className="text-medishare-blue" />
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="bg-medishare-blue/10 p-3 rounded-full">
+                <User size={24} className="text-medishare-blue" />
+              </div>
+              <div>
+                <h2 className="font-semibold">John Doe</h2>
+                <p className="text-gray-500 text-sm">+91 9876543210</p>
+              </div>
             </div>
-            <div>
-              <h2 className="font-semibold">John Doe</h2>
-              <p className="text-gray-500 text-sm">+91 9876543210</p>
-            </div>
+            <Button variant="outline" size="sm" className="flex items-center gap-2">
+              <Settings size={16} className="text-gray-500" />
+              <span>Settings</span>
+            </Button>
           </div>
         </div>
         

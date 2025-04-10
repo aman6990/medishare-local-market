@@ -2,7 +2,7 @@
 import React from 'react';
 import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
-import { User, Settings, Heart, MapPin, Phone, HelpCircle, LogOut, UserCog } from 'lucide-react';
+import { User, Heart, MapPin, Phone, HelpCircle, LogOut } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
@@ -22,32 +22,10 @@ const Account = () => {
                 <p className="text-gray-500 text-sm">+91 9876543210</p>
               </div>
             </div>
-            <Button variant="outline" size="sm" asChild className="flex items-center gap-2">
-              <Link to="/profile-settings">
-                <UserCog size={16} className="text-gray-500" />
-                <span>Edit Profile</span>
-              </Link>
-            </Button>
           </div>
         </div>
         
         <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-          <Link to="/profile-settings" className="flex items-center justify-between p-4 border-b">
-            <div className="flex items-center gap-3">
-              <UserCog size={20} className="text-gray-500" />
-              <span>Profile Settings</span>
-            </div>
-            <span className="text-gray-400">›</span>
-          </Link>
-          
-          <Link to="/account/profile" className="flex items-center justify-between p-4 border-b">
-            <div className="flex items-center gap-3">
-              <Settings size={20} className="text-gray-500" />
-              <span>Account Settings</span>
-            </div>
-            <span className="text-gray-400">›</span>
-          </Link>
-          
           <Link to="/saved-items" className="flex items-center justify-between p-4 border-b">
             <div className="flex items-center gap-3">
               <Heart size={20} className="text-gray-500" />

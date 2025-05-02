@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
-import { ArrowLeft, Save, X, Check, Bell, Language } from 'lucide-react';
+import { ArrowLeft, Save, X, Check, Bell, Languages } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -185,7 +184,7 @@ const ProfileSettings = () => {
           <TabsContent value="language" className="space-y-4">
             <div className="bg-white rounded-lg shadow-sm p-4 space-y-4">
               <div className="flex items-center space-x-4">
-                <Language size={24} className="text-medishare-blue" />
+                <Languages size={24} className="text-medishare-blue" />
                 <div className="flex-1">
                   <h3 className="font-medium">Select Language</h3>
                   <p className="text-sm text-gray-500">Choose your preferred language</p>

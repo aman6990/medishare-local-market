@@ -2,7 +2,7 @@
 import React from 'react';
 import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
-import { User, Heart, MapPin, Phone, HelpCircle, LogOut } from 'lucide-react';
+import { User, Heart, MapPin, Phone, HelpCircle, LogOut, Edit } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
@@ -22,6 +22,12 @@ const Account = () => {
                 <p className="text-gray-500 text-sm">+91 9876543210</p>
               </div>
             </div>
+            <Link to="/profile-settings">
+              <Button variant="outline" size="sm" className="gap-2">
+                <Edit size={16} />
+                Edit Profile
+              </Button>
+            </Link>
           </div>
         </div>
         

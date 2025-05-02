@@ -13,7 +13,7 @@ const Header = () => {
         <Link to="/" className="flex items-center">
           <img 
             src="/lovable-uploads/87ad8b52-6905-433d-ba0d-877a9c3eb033.png" 
-            alt="S2meds Health Center" 
+            alt="s2meds" 
             className="h-8 object-contain"
           />
         </Link>

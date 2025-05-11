@@ -9,13 +9,182 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      audit_logs: {
+        Row: {
+          action: string
+          created_at: string | null
+          id: string
+          record_id: string | null
+          table_name: string
+          user_id: string | null
+        }
+        Insert: {
+          action: string
+          created_at?: string | null
+          id?: string
+          record_id?: string | null
+          table_name: string
+          user_id?: string | null
+        }
+        Update: {
+          action?: string
+          created_at?: string | null
+          id?: string
+          record_id?: string | null
+          table_name?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          created_at: string | null
+          customer_name: string
+          id: string
+          status: string | null
+          total_amount: number
+        }
+        Insert: {
+          created_at?: string | null
+          customer_name: string
+          id?: string
+          status?: string | null
+          total_amount: number
+        }
+        Update: {
+          created_at?: string | null
+          customer_name?: string
+          id?: string
+          status?: string | null
+          total_amount?: number
+        }
+        Relationships: []
+      }
+      product_drafts: {
+        Row: {
+          created_at: string | null
+          form_data: Json
+          id: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          form_data: Json
+          id?: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          form_data?: Json
+          id?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          batch_number: string
+          category: string
+          created_at: string | null
+          description: string | null
+          dosage_instructions: string
+          expiry_date: string
+          id: string
+          ingredients: string
+          manufacturer: string | null
+          name: string
+          prescription_required: boolean | null
+          price: number
+          side_effects: string | null
+          sku: string | null
+          stock: number
+          updated_at: string | null
+        }
+        Insert: {
+          batch_number: string
+          category: string
+          created_at?: string | null
+          description?: string | null
+          dosage_instructions: string
+          expiry_date: string
+          id?: string
+          ingredients: string
+          manufacturer?: string | null
+          name: string
+          prescription_required?: boolean | null
+          price: number
+          side_effects?: string | null
+          sku?: string | null
+          stock: number
+          updated_at?: string | null
+        }
+        Update: {
+          batch_number?: string
+          category?: string
+          created_at?: string | null
+          description?: string | null
+          dosage_instructions?: string
+          expiry_date?: string
+          id?: string
+          ingredients?: string
+          manufacturer?: string | null
+          name?: string
+          prescription_required?: boolean | null
+          price?: number
+          side_effects?: string | null
+          sku?: string | null
+          stock?: number
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string | null
+          email: string | null
+          first_name: string | null
+          id: string
+          last_name: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email?: string | null
+          first_name?: string | null
+          id: string
+          last_name?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string | null
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_hourly_sales: {
+        Args: { time_filter: string }
+        Returns: {
+          hour_of_day: string
+          total_sales: number
+        }[]
+      }
+      get_sales_metrics: {
+        Args: { time_filter: string }
+        Returns: {
+          total_sales: number
+          total_orders: number
+          avg_order_value: number
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never

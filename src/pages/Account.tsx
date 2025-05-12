@@ -16,7 +16,7 @@ const Account = () => {
   return (
     <div className="pb-16 bg-gray-50 min-h-screen">
       <Header />
-      <div className="p-4">
+      <div className="p-4 pt-6">
         <div className="bg-white p-4 rounded-lg shadow-sm mb-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">

@@ -67,7 +67,7 @@ const SearchBar = () => {
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}
           placeholder="Search for medicines" 
-          className="w-full p-3 pr-10 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-medishare-blue"
+          className="w-full p-3 pl-4 pr-10 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-medishare-blue"
         />
         <Search className="absolute top-3 right-4 text-gray-400" size={20} />
       </div>
@@ -75,7 +75,7 @@ const SearchBar = () => {
       {isFocused && suggestions.length > 0 && (
         <div 
           ref={suggestionsRef}
-          className="absolute z-50 w-full bg-white mt-1 rounded-md shadow-lg border border-gray-200 max-h-72 overflow-y-auto"
+          className="absolute z-40 w-full bg-white mt-1 rounded-md shadow-lg border border-gray-200 max-h-72 overflow-y-auto"
         >
           {suggestions.map((suggestion) => (
             <div

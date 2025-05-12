@@ -95,7 +95,9 @@ const Index = () => {
   return (
     <div className="pb-16 bg-gray-50 min-h-screen">
       <Header />
-      <SearchBar />
+      <div className="pt-4 px-4">
+        <SearchBar />
+      </div>
       
       <div className="px-4 mt-4">
         <PromoCarousel />

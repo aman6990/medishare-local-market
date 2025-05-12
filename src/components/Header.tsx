@@ -29,7 +29,7 @@ const Header = () => {
   
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="container mx-auto p-4">
+      <div className="container mx-auto py-3 px-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <Link to="/" className="font-bold text-xl text-teal-600">S2Meds</Link>

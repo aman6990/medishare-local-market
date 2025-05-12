@@ -84,16 +84,27 @@ const Auth = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
-      <Card className="w-full max-w-md">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-white to-blue-50 p-4">
+      <Card className="w-full max-w-md border-t-4 border-t-medishare-blue shadow-lg">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold">S2Meds</CardTitle>
+          <CardTitle className="text-3xl font-bold text-medishare-blue">S2Meds</CardTitle>
+          <p className="text-gray-600 mt-2">Your trusted healthcare partner</p>
         </CardHeader>
         
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 mb-4">
-            <TabsTrigger value="login">Login</TabsTrigger>
-            <TabsTrigger value="signup">Sign Up</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 mb-4 bg-blue-50">
+            <TabsTrigger 
+              value="login" 
+              className="data-[state=active]:bg-medishare-blue data-[state=active]:text-white"
+            >
+              Login
+            </TabsTrigger>
+            <TabsTrigger 
+              value="signup" 
+              className="data-[state=active]:bg-medishare-blue data-[state=active]:text-white"
+            >
+              Sign Up
+            </TabsTrigger>
           </TabsList>
           
           <form onSubmit={handleAuth}>
@@ -109,6 +120,7 @@ const Auth = () => {
                   required
                   autoComplete="email"
                   aria-label="Email address"
+                  className="border-gray-300 focus:border-medishare-blue focus:ring-medishare-blue"
                 />
               </div>
               
@@ -124,12 +136,17 @@ const Auth = () => {
                   autoComplete={activeTab === 'signup' ? 'new-password' : 'current-password'}
                   minLength={6}
                   aria-label="Password"
+                  className="border-gray-300 focus:border-medishare-blue focus:ring-medishare-blue"
                 />
               </div>
             </CardContent>
             
             <CardFooter>
-              <Button type="submit" className="w-full" disabled={loading}>
+              <Button 
+                type="submit" 
+                className="w-full bg-medishare-blue hover:bg-medishare-blue/90" 
+                disabled={loading}
+              >
                 {loading ? 'Please wait...' : activeTab === 'signup' ? 'Sign Up' : 'Login'}
               </Button>
             </CardFooter>

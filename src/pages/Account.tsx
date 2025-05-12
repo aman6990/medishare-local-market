@@ -2,11 +2,17 @@
 import React from 'react';
 import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
-import { User, Heart, MapPin, Phone, HelpCircle, LogOut, Edit } from 'lucide-react';
+import LogoutButton from '@/components/LogoutButton';
+import { User, Heart, MapPin, Phone, HelpCircle, Edit } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Account = () => {
+  const { user } = useAuth();
+  const email = user?.email || '';
+  const name = email.split('@')[0] || 'User';
+
   return (
     <div className="pb-16 bg-gray-50 min-h-screen">
       <Header />
@@ -18,8 +24,8 @@ const Account = () => {
                 <User size={24} className="text-medishare-blue" />
               </div>
               <div>
-                <h2 className="font-semibold">John Doe</h2>
-                <p className="text-gray-500 text-sm">+91 9876543210</p>
+                <h2 className="font-semibold">{name}</h2>
+                <p className="text-gray-500 text-sm">{email}</p>
               </div>
             </div>
             <Link to="/profile-settings">
@@ -64,10 +70,9 @@ const Account = () => {
             <span className="text-gray-400">›</span>
           </Link>
           
-          <button className="w-full flex items-center gap-3 p-4 text-red-500">
-            <LogOut size={20} />
-            <span>Logout</span>
-          </button>
+          <div className="w-full p-4">
+            <LogoutButton />
+          </div>
         </div>
       </div>
       <BottomNav />

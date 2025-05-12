@@ -1,4 +1,5 @@
 
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -19,35 +20,45 @@ import ProductDetail from "./pages/ProductDetail";
 import SavedItems from "./pages/SavedItems";
 import ProfileSettings from "./pages/ProfileSettings";
 
-const queryClient = new QueryClient();
+// Create a client with default options
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 1,
+    },
+  },
+});
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <CartProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/notifications" element={<Notifications />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/assistant" element={<Assistant />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/account" element={<Account />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/chat" element={<Chat />} />
-            <Route path="/addresses" element={<Addresses />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/saved-items" element={<SavedItems />} />
-            <Route path="/profile-settings" element={<ProfileSettings />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </CartProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <CartProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/notifications" element={<Notifications />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/assistant" element={<Assistant />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/account" element={<Account />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/chat" element={<Chat />} />
+              <Route path="/addresses" element={<Addresses />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/saved-items" element={<SavedItems />} />
+              <Route path="/profile-settings" element={<ProfileSettings />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </CartProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </React.StrictMode>
 );
 
 export default App;

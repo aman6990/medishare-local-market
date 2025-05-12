@@ -1,3 +1,4 @@
+
 name: Android Build CI
 
 on:
@@ -19,14 +20,30 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build Web App
+      run: npm run build
+    
+    - name: Add Android Platform
+      run: |
+        npx cap add android
+        npx cap sync
+    
     - name: Make gradlew executable
-      run: chmod +x gradlew
+      run: chmod +x android/gradlew
     
     - name: Build APK
-      run: ./gradlew assembleDebug
+      run: cd android && ./gradlew assembleDebug
       
     - name: Upload APK
       uses: actions/upload-artifact@v3
       with:
-        name: app-debug
-        path: app/build/outputs/apk/debug/app-debug.apk
+        name: s2meds-app-debug
+        path: android/app/build/outputs/apk/debug/app-debug.apk

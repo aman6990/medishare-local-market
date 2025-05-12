@@ -170,6 +170,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      check_leaked_password: {
+        Args: { password: string }
+        Returns: boolean
+      }
       get_hourly_sales: {
         Args: { time_filter: string }
         Returns: {

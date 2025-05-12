@@ -6,6 +6,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "@/contexts/CartContext";
+import { AuthProvider } from "@/contexts/AuthContext";
+import ProtectedRoute from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Notifications from "./pages/Notifications";
@@ -19,6 +21,7 @@ import Addresses from "./pages/Addresses";
 import ProductDetail from "./pages/ProductDetail";
 import SavedItems from "./pages/SavedItems";
 import ProfileSettings from "./pages/ProfileSettings";
+import Auth from "./pages/Auth";
 
 // Create a client with default options
 const queryClient = new QueryClient({
@@ -34,28 +37,83 @@ const App = () => (
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <CartProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/notifications" element={<Notifications />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/assistant" element={<Assistant />} />
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/account" element={<Account />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/chat" element={<Chat />} />
-              <Route path="/addresses" element={<Addresses />} />
-              <Route path="/product/:id" element={<ProductDetail />} />
-              <Route path="/saved-items" element={<SavedItems />} />
-              <Route path="/profile-settings" element={<ProfileSettings />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Routes>
+                {/* Public Route */}
+                <Route path="/auth" element={<Auth />} />
+                
+                {/* Protected Routes */}
+                <Route path="/" element={
+                  <ProtectedRoute>
+                    <Index />
+                  </ProtectedRoute>
+                } />
+                <Route path="/notifications" element={
+                  <ProtectedRoute>
+                    <Notifications />
+                  </ProtectedRoute>
+                } />
+                <Route path="/cart" element={
+                  <ProtectedRoute>
+                    <Cart />
+                  </ProtectedRoute>
+                } />
+                <Route path="/assistant" element={
+                  <ProtectedRoute>
+                    <Assistant />
+                  </ProtectedRoute>
+                } />
+                <Route path="/orders" element={
+                  <ProtectedRoute>
+                    <Orders />
+                  </ProtectedRoute>
+                } />
+                <Route path="/account" element={
+                  <ProtectedRoute>
+                    <Account />
+                  </ProtectedRoute>
+                } />
+                <Route path="/contact" element={
+                  <ProtectedRoute>
+                    <Contact />
+                  </ProtectedRoute>
+                } />
+                <Route path="/chat" element={
+                  <ProtectedRoute>
+                    <Chat />
+                  </ProtectedRoute>
+                } />
+                <Route path="/addresses" element={
+                  <ProtectedRoute>
+                    <Addresses />
+                  </ProtectedRoute>
+                } />
+                <Route path="/product/:id" element={
+                  <ProtectedRoute>
+                    <ProductDetail />
+                  </ProtectedRoute>
+                } />
+                <Route path="/saved-items" element={
+                  <ProtectedRoute>
+                    <SavedItems />
+                  </ProtectedRoute>
+                } />
+                <Route path="/profile-settings" element={
+                  <ProtectedRoute>
+                    <ProfileSettings />
+                  </ProtectedRoute>
+                } />
+                
+                {/* Catch-all route */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </CartProvider>
+        </AuthProvider>
       </TooltipProvider>
     </QueryClientProvider>
   </React.StrictMode>

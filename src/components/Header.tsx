@@ -1,41 +1,64 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Bell, ShoppingCart } from 'lucide-react';
-import { useCart } from '@/contexts/CartContext';
+import { ShoppingCart, Bell, Search, User } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import LogoutButton from './LogoutButton';
 
 const Header = () => {
-  const { totalItems } = useCart();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
+  useEffect(() => {
+    // Check current session
+    const checkAuth = async () => {
+      const { data } = await supabase.auth.getSession();
+      setIsAuthenticated(!!data.session);
+    };
+    
+    checkAuth();
+    
+    // Set up auth state listener
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setIsAuthenticated(!!session);
+      }
+    );
+    
+    return () => subscription.unsubscribe();
+  }, []);
   
   return (
-    <div className="flex justify-between items-center p-4 bg-white shadow-sm sticky top-0 z-10">
-      <div className="flex items-center space-x-4">
-        <Link to="/" className="flex items-center">
-          <img 
-            src="/lovable-uploads/87ad8b52-6905-433d-ba0d-877a9c3eb033.png" 
-            alt="s2meds" 
-            className="h-8 object-contain"
-          />
-        </Link>
-        <div className="flex items-center space-x-2">
-          <MapPin className="text-medishare-red" size={20} />
-          <div className="font-semibold">Begusarai</div>
+    <header className="sticky top-0 z-50 bg-white shadow-sm">
+      <div className="container mx-auto p-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <Link to="/" className="font-bold text-xl text-teal-600">S2Meds</Link>
+          </div>
+          
+          <div className="flex items-center space-x-4">
+            <Link to="/notifications" className="text-gray-600 hover:text-teal-600">
+              <Bell size={20} />
+            </Link>
+            <Link to="/cart" className="text-gray-600 hover:text-teal-600">
+              <ShoppingCart size={20} />
+            </Link>
+            
+            {isAuthenticated ? (
+              <div className="flex items-center gap-2">
+                <Link to="/account" className="text-gray-600 hover:text-teal-600">
+                  <User size={20} />
+                </Link>
+                <LogoutButton />
+              </div>
+            ) : (
+              <Link to="/auth" className="text-gray-600 hover:text-teal-600">
+                <User size={20} />
+              </Link>
+            )}
+          </div>
         </div>
       </div>
-      <div className="flex space-x-4">
-        <Link to="/notifications">
-          <Bell size={20} />
-        </Link>
-        <Link to="/cart" className="relative">
-          <ShoppingCart size={20} />
-          {totalItems > 0 && (
-            <span className="absolute -top-2 -right-2 bg-medishare-red text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-              {totalItems}
-            </span>
-          )}
-        </Link>
-      </div>
-    </div>
+    </header>
   );
 };
 
